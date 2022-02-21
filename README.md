@@ -17,12 +17,21 @@ az mysql server firewall-rule create --resource-group user02OsTicketPaaSRG --ser
 
 ## DB접속 문자열
 ```
-Database=osTicket; Data Source=user02osticketsrv01.mysql.database.azure.com; User Id=demouser@user02osticketsrv01; Password=demo@pass123
+Database=osTicket; Data Source=user02osticketsrv01.mysql.database.azure.com; User Id=demouser@user02osticketsrv01; Password=demo@user1234
 ```
 
+## Web App. 배포센터 > FTP 엔드포인트
+```
+ftps://waws-prod-bay-175.ftp.azurewebsites.windows.net/site/wwwroot
+```
+
+
+## Web app  -- AppService plan 생성
+```
+az appservice plan create -n OsTicket -g user02OsTicketPaaSRG --is-linux -l "West US" --sku S1 --number-of-workers 1
+```
 
 ## Web app 생성
 ```
-az appservice plan create -n OsTicket -g user02OsTicketPaaSRG --is-linux -l "West US" --sku S1 --number-of-workers 1![image](https://user-images.githubusercontent.com/100105041/154898997-10f9795e-60f3-4798-a8c9-6685082fe3a5.png)
+az webapp create -n user02osTicketsystem -g user02OsTicketPaaSRG -p OsTicket -r "php|7.4"
 ```
-
