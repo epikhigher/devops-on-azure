@@ -1,6 +1,4 @@
-# devops-on-azure
-
-# Azure-oss-hand-on-lab
+# devops-on-azure.   Azure-oss-hand-on-lab
 
 ## 리소스 그룹 생성
 ```
