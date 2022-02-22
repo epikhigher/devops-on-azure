@@ -20,11 +20,24 @@ az mysql server firewall-rule create --resource-group user02OsTicketPaaSRG --ser
 Database=osTicket; Data Source=user02osticketsrv01.mysql.database.azure.com; User Id=demouser@user02osticketsrv01; Password=demo@user1234
 ```
 
-## Web App. 배포센터 > FTP 엔드포인트
+## Web App. 배포센터 > FTP 엔드포인트 (Prod용)
 ```
 ftps://waws-prod-bay-175.ftp.azurewebsites.windows.net/site/wwwroot
 ```
 
+
+## Web App. 배포센터 > FTP 엔드포인트 (Staging용)
+```
+ftps://waws-prod-bay-175.ftp.azurewebsites.windows.net/site/wwwroot
+```
+
+
+
+esponse=$(curl -s -o /dev/null -w "%{http_code}\n" http://waws-prod-bay-175.ftp.azurewebsites.windows.net)
+if [ "$response" != "200" ]
+then
+   exit 1
+fi
 
 ## Web app  -- AppService plan 생성
 ```
